@@ -1,0 +1,9 @@
+# Patrones propios del proyecto para .agents/hooks/guardia.py (se suman a los de serie: .env, claves, credenciales).
+# bloquear: el agente no puede leer ni tocar lo que coincida (en archivos y en comandos de shell).
+# preguntar: Claude pide confirmación antes de ejecutar (Codex no respeta «ask»: usar sus aprobaciones).
+# Los patrones personales de una máquina van en .agents/guardia.local.txt (mismo formato, ignorado por git).
+#
+# bloquear: firma\.properties
+# bloquear: [\\/]\.mis-credenciales[\\/]
+# preguntar: \bwrangler\s+(deploy|secret\s+put)\b
+# preguntar: \b(npm|pnpm)\s+publish\b

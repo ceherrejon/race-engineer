@@ -1,0 +1,37 @@
+name: Pruebas
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  pruebas:
+    # La skill se usa en Windows, macOS y Linux: los scripts y la guardia se prueban en los tres.
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python: ["3.11", "3.13"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Pruebas
+        run: python -m unittest discover -s tests -v
+
+  manifiesto:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validar el marketplace de Claude Code
+        run: |
+          npm install -g @anthropic-ai/claude-code
+          claude plugin validate . --strict

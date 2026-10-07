@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+
+# Configuración personal de agentes (no se comparte)
+CLAUDE.local.md
+.claude/settings.local.json
+
+# Sistema
+Thumbs.db
+.DS_Store
+
+# Patrones personales de la guardia (rutas de secretos de cada máquina)
+.agents/guardia.local.txt
+
+# Material privado que no se publica (pruebas sobre proyectos de terceros, imágenes con derechos)
+privado/
+
+# Secretos falsos para probar la guardia
+pruebas/guardia/

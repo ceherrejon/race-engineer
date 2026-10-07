@@ -1,0 +1,37 @@
+# .codex/config.toml del proyecto.
+# Solo se aplica si el proyecto es de confianza. En ~/.codex/config.toml:
+#   [projects."<ruta absoluta del repo>"]
+#   trust_level = "trusted"
+# Comprobar las capas cargadas con /debug-config y el estado con /status.
+# No fijar aquí el modelo: va en la configuración de usuario.
+
+sandbox_mode = "workspace-write"
+approval_policy = "on-request"
+
+# Red apagada: instalar dependencias o llamar a APIs pedirá aprobación. Activarla solo si el trabajo diario la necesita.
+[sandbox_workspace_write]
+network_access = false
+
+# Por defecto Codex pasa a los comandos las variables con KEY, SECRET o TOKEN en el nombre.
+[shell_environment_policy]
+ignore_default_excludes = false
+
+# Mismo guardián que usa Claude Code. Al ser una carpeta .agents/, el sandbox la deja en solo lectura.
+# Aprobar el hook en el CLI con /hooks (en la app no funciona; al arrancar, la opción por defecto es NO aprobarlo).
+# Luego probar con un secreto falso: debe salir «Blocked by hook». «Hook failed» significa que NO bloqueó.
+[[hooks.PreToolUse]]
+# Todas las herramientas: la guardia decide qué revisar (rutas y comandos), sin depender de los nombres de Codex.
+matcher = ".*"
+
+[[hooks.PreToolUse.hooks]]
+type = "command"
+# Portable: la raíz del repo se calcula en cada máquina. «$(…)» funciona igual en PowerShell (Windows) y en sh.
+# Requiere git. Cada persona necesita el intérprete indicado (ver docs/agentes/INCORPORACION.md).
+command = 'python3 "$(git rev-parse --show-toplevel)/.agents/hooks/guardia.py"'
+timeout = 30
+
+# Ejemplo de MCP (solo los que el proyecto use de verdad):
+# [mcp_servers.docs]
+# url = "https://ejemplo.com/mcp"
+# enabled_tools = ["buscar"]
+# default_tools_approval_mode = "writes"

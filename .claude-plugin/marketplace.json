@@ -1,0 +1,42 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "race-engineer",
+  "description": "Skills para preparar y auditar proyectos que se desarrollan con Claude Code y Codex.",
+  "owner": {
+    "name": "César Herrejón"
+  },
+  "metadata": {
+    "description": "Skills para preparar y auditar proyectos que se desarrollan con Claude Code y Codex.",
+    "version": "1.1.0"
+  },
+  "plugins": [
+    {
+      "name": "race-engineer",
+      "description": "Prepara un proyecto nuevo o audita uno existente para Claude Code y/o Codex: instrucciones (CLAUDE.md, AGENTS.md), permisos, hooks, guardia de secretos, subagentes, verificación y estado de tareas largas. Sets up or audits a project's agent configuration in any language.",
+      "version": "1.1.0",
+      "author": {
+        "name": "César Herrejón"
+      },
+      "license": "MIT",
+      "keywords": ["claude-code", "codex", "agents-md", "claude-md", "hooks", "audit", "setup", "secrets"],
+      "category": "development",
+      "source": "./skill",
+      "strict": false,
+      "skills": ["./race-engineer"]
+    },
+    {
+      "name": "limpiar-comentarios",
+      "description": "Limpia los comentarios de código ya escrito para que solo queden los que explican lo que el código no puede decir, y verifica que no cambió nada más. Cleans up code comments and verifies only comments changed.",
+      "version": "1.0.0",
+      "author": {
+        "name": "César Herrejón"
+      },
+      "license": "MIT",
+      "keywords": ["comments", "refactor", "code-quality"],
+      "category": "development",
+      "source": "./skill",
+      "strict": false,
+      "skills": ["./limpiar-comentarios"]
+    }
+  ]
+}

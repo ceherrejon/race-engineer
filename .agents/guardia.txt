@@ -1,0 +1,4 @@
+# Patrones propios de este proyecto (se suman a los de serie: .env, claves, credenciales).
+# Desde aquí se auditan otros proyectos: sus secretos viven fuera de su árbol.
+# Las rutas personales de cada máquina van en .agents/guardia.local.txt, que no se versiona.
+bloquear: [\/]\.codex[\/]auth\.json
