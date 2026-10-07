@@ -127,4 +127,4 @@ El objetivo es que cada proyecto tenga, en el formato de cada herramienta que us
 | `references/practicas.md` | Qué pide y por qué cada práctica citada (P-…, D-…, C-…). Se genera desde la base de conocimiento del proyecto de origen |
 | `templates/` | `AGENTS.md` (también `en/AGENTS.md`), `CLAUDE.md`, `INCORPORACION.md`, `claude/settings.json`, `codex/config.toml`, revisores, regla por zona, `progress.md`, `tarea.md`, `guardia.txt`, fragmentos |
 
-**Requisitos:** Python 3.11+ para los scripts y git en el proyecto, que lo necesitan el hook de Codex y la detección de secretos versionados. Probada en Windows 11 con Claude Code 2.1.289 y Codex 0.160. En macOS y Linux los scripts usan solo la biblioteca estándar, pero **todavía no se han probado**.
+**Requisitos:** Python 3.11+ para los scripts y git en el proyecto, que lo necesitan el hook de Codex y la detección de secretos versionados. Probada en Windows 11 con Claude Code 2.1.289 y Codex 0.160. En macOS y Linux los scripts pasan las pruebas automáticas, pero la skill **todavía no se ha usado en vivo** con los agentes.
